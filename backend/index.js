@@ -5,10 +5,10 @@ const json = await request.get({
   url: `https://api.line.me/oauth2/v2.1/verify?access_token=${accessToken}`,
   json: true
 })
+
 if (json.client_id !== CHANNEL_ID) {
   return 401
 }
-
 
 // Getting User Profile by Access Token
 const profile = await request.get({
@@ -16,7 +16,6 @@ const profile = await request.get({
   headers: { Authorization: `Bearer ${accessToken}` },
   json: true
 })
-
 
 // Revoke Access Token
 await request.post({
